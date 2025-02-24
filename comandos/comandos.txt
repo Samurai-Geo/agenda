@@ -17,3 +17,19 @@ git add .
 git commit -m 'Mensagem'
 git remote add origin URL_DO_GIT
 
+
+
+echo "# agenda" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:Samurai-Geo/agenda.git
+git push -u origin main
+
+
+git remote add origin git@github.com:Samurai-Geo/agenda.git
+git branch -M main
+git push -u origin main
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
