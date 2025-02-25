@@ -33,3 +33,4 @@ git branch -M main
 git push -u origin main
 
 ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-agkey-240225
