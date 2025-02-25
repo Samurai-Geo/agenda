@@ -53,5 +53,17 @@
     "python.defaultInterpreterPath": "./venv/bin/python",
     "python.analysis.typeCheckingMode": "basic",
     "cSpell.enabled": true,
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ]
+        }
+    ]
 }
