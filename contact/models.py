@@ -36,7 +36,7 @@ class Contact(models.Model):
         Category,
         on_delete=models.SET_NULL,
         blank=True, null=True,
-        verbose_name='Categorai',
+        verbose_name='Categoria',
     )
     owner = models.ForeignKey(
         User,
