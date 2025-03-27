@@ -1,5 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from . import models
 
 
@@ -83,9 +85,12 @@ class ContactForm(forms.ModelForm):
     
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')
-
+    
         try:
-            num = int(phone)
+            phone = str(phone)
+            if str.isdigit(phone):
+                phone = int(phone)
+                
         except:
             raise ValidationError(
                 'Seu telefone não exite!!!',
@@ -94,3 +99,30 @@ class ContactForm(forms.ModelForm):
 
         return phone
     
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(
+        required=True,
+        min_length=3,
+        error_messages={
+            'required': 'Nova mensagem de erro'
+        }
+    )
+    email = forms.EmailField(required=True)
+    username = forms.CharField(required=True)
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 'last_name', 'email',
+            'username', 'password1', 'password2'
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if User.objects.filter(email=email).exists():
+            self.add_error(
+                'email',
+                ValidationError('Já existe um usuário com este e-mail.', code='invalid')
+            )
+        return email
+        
