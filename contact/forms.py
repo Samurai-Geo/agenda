@@ -103,9 +103,9 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
         min_length=3,
-        error_messages={
-            'required': 'Nova mensagem de erro'
-        }
+        # error_messages={
+        #     'required': 'Nova mensagem de erro'
+        # }
     )
     email = forms.EmailField(required=True)
     username = forms.CharField(required=True)
