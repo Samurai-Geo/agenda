@@ -1,13 +1,14 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+    {% csrf_token %}
     <div class="form-wrapper">
 
         <h2>Login</h2>
         
         {% if user.is_authenticated %}
             Você fez login como {{ user.username }}. 
-            Clique <a href="">aqui</a> para sair.
+            Clique <a href="{% url "contact:logout" %}">aqui</a> para sair.
 
         {% else %}
             {% include "contact/partials/_user-form.html" %}
