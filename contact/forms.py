@@ -179,7 +179,7 @@ class RegisterUpdateForm(forms.ModelForm):
             if password1 != password2:
                 self.add_error(
                     'password2',
-                    ValidationError('Senhas não batem')
+                    ValidationError('Senhas não coincidem')
                 )
 
         return super().clean()
